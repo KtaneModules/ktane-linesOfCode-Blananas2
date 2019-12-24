@@ -1,1 +1,1 @@
-ktane-linesOfCode
+#[ModKit Wiki](../../wiki)
