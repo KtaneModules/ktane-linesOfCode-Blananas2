@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using KModkit;
+using System.Text.RegularExpressions;
 
 public class linesOfCodeScript : MonoBehaviour {
 
@@ -548,7 +549,7 @@ public class linesOfCodeScript : MonoBehaviour {
                 case 89: if ((y - z) == 0) { break; } lines += "\n\nif (n == (x / (y - z))) {"; goal = (x / (y - z)); goalFound = true; break;
                 case 90: if ((y * z) == 0) { break; } lines += "\n\nif (n == (x / (y * z))) {"; goal = (x / (y * z)); goalFound = true; break;
                 case 91: if (y == 0 || z == 0) { break; } lines += "\n\nif (n == (x / (y / z))) {"; goal = (x / (y / z)); goalFound = true; break;
-                case 92: if (y == 0 || z == 0) { break; } lines += "\n\nif (n == (x / (y % z))) {"; goal = (x / (y % z)); goalFound = true; break;
+                case 92: if (y == 0 || z == 0 || (y % z) == 0) { break; } lines += "\n\nif (n == (x / (y % z))) {"; goal = (x / (y % z)); goalFound = true; break;
                 case 93: if ((y & z) == 0) { break; } lines += "\n\nif (n == (x / (y & z))) {"; goal = (x / (y & z)); goalFound = true; break;
                 case 94: if ((y | z) == 0) { break; } lines += "\n\nif (n == (x / (y | z))) {"; goal = (x / (y | z)); goalFound = true; break;
                 case 95: if ((y ^ z) == 0) { break; } lines += "\n\nif (n == (x / (y ^ z))) {"; goal = (x / (y ^ z)); goalFound = true; break;
@@ -676,7 +677,7 @@ public class linesOfCodeScript : MonoBehaviour {
                 case 217: if ((z - y) == 0) { break; } lines += "\n\nif (n == (x / (z - y))) {"; goal = (x / (z - y)); goalFound = true; break;
                 case 218: if ((z * y) == 0) { break; } lines += "\n\nif (n == (x / (z * y))) {"; goal = (x / (z * y)); goalFound = true; break;
                 case 219: if (z == 0 || y == 0) { break; } lines += "\n\nif (n == (x / (z / y))) {"; goal = (x / (z / y)); goalFound = true; break;
-                case 220: if (z == 0 || y == 0) { break; } lines += "\n\nif (n == (x / (z % y))) {"; goal = (x / (z % y)); goalFound = true; break;
+                case 220: if (z == 0 || y == 0 || (x%y) == 0) { break; } lines += "\n\nif (n == (x / (z % y))) {"; goal = (x / (z % y)); goalFound = true; break;
                 case 221: if ((z & y) == 0) { break; } lines += "\n\nif (n == (x / (z & y))) {"; goal = (x / (z & y)); goalFound = true; break;
                 case 222: if ((z | y) == 0) { break; } lines += "\n\nif (n == (x / (z | y))) {"; goal = (x / (z | y)); goalFound = true; break;
                 case 223: if ((z ^ y) == 0) { break; } lines += "\n\nif (n == (x / (z ^ y))) {"; goal = (x / (z ^ y)); goalFound = true; break;
@@ -804,7 +805,7 @@ public class linesOfCodeScript : MonoBehaviour {
                 case 345: if ((x - z) == 0) { break; } lines += "\n\nif (n == (y / (x - z))) {"; goal = (y / (x - z)); goalFound = true; break;
                 case 346: if ((x * z) == 0) { break; } lines += "\n\nif (n == (y / (x * z))) {"; goal = (y / (x * z)); goalFound = true; break;
                 case 347: if (x == 0 || z == 0) { break; } lines += "\n\nif (n == (y / (x / z))) {"; goal = (y / (x / z)); goalFound = true; break;
-                case 348: if (x == 0 || z == 0) { break; } lines += "\n\nif (n == (y / (x % z))) {"; goal = (y / (x % z)); goalFound = true; break;
+                case 348: if (x == 0 || z == 0 || (x%z) == 0) { break; } lines += "\n\nif (n == (y / (x % z))) {"; goal = (y / (x % z)); goalFound = true; break;
                 case 349: if ((x & z) == 0) { break; } lines += "\n\nif (n == (y / (x & z))) {"; goal = (y / (x & z)); goalFound = true; break;
                 case 350: if ((x | z) == 0) { break; } lines += "\n\nif (n == (y / (x | z))) {"; goal = (y / (x | z)); goalFound = true; break;
                 case 351: if ((x ^ z) == 0) { break; } lines += "\n\nif (n == (y / (x ^ z))) {"; goal = (y / (x ^ z)); goalFound = true; break;
@@ -932,7 +933,7 @@ public class linesOfCodeScript : MonoBehaviour {
                 case 473: if ((z - x) == 0) { break; } lines += "\n\nif (n == (y / (z - x))) {"; goal = (y / (z - x)); goalFound = true; break;
                 case 474: if ((z * x) == 0) { break; } lines += "\n\nif (n == (y / (z * x))) {"; goal = (y / (z * x)); goalFound = true; break;
                 case 475: if (z == 0 || x == 0) { break; } lines += "\n\nif (n == (y / (z / x))) {"; goal = (y / (z / x)); goalFound = true; break;
-                case 476: if (z == 0 || x == 0) { break; } lines += "\n\nif (n == (y / (z % x))) {"; goal = (y / (z % x)); goalFound = true; break;
+                case 476: if (z == 0 || x == 0 || (z%x) == 0) { break; } lines += "\n\nif (n == (y / (z % x))) {"; goal = (y / (z % x)); goalFound = true; break;
                 case 477: if ((z & x) == 0) { break; } lines += "\n\nif (n == (y / (z & x))) {"; goal = (y / (z & x)); goalFound = true; break;
                 case 478: if ((z | x) == 0) { break; } lines += "\n\nif (n == (y / (z | x))) {"; goal = (y / (z | x)); goalFound = true; break;
                 case 479: if ((z ^ x) == 0) { break; } lines += "\n\nif (n == (y / (z ^ x))) {"; goal = (y / (z ^ x)); goalFound = true; break;
@@ -1060,7 +1061,7 @@ public class linesOfCodeScript : MonoBehaviour {
                 case 601: if ((x - y) == 0) { break; } lines += "\n\nif (n == (z / (x - y))) {"; goal = (z / (x - y)); goalFound = true; break;
                 case 602: if ((x * y) == 0) { break; } lines += "\n\nif (n == (z / (x * y))) {"; goal = (z / (x * y)); goalFound = true; break;
                 case 603: if (x == 0 || y == 0) { break; } lines += "\n\nif (n == (z / (x / y))) {"; goal = (z / (x / y)); goalFound = true; break;
-                case 604: if (x == 0 || y == 0) { break; } lines += "\n\nif (n == (z / (x % y))) {"; goal = (z / (x % y)); goalFound = true; break;
+                case 604: if (x == 0 || y == 0 || (x%y) == 0) { break; } lines += "\n\nif (n == (z / (x % y))) {"; goal = (z / (x % y)); goalFound = true; break;
                 case 605: if ((x & y) == 0) { break; } lines += "\n\nif (n == (z / (x & y))) {"; goal = (z / (x & y)); goalFound = true; break;
                 case 606: if ((x | y) == 0) { break; } lines += "\n\nif (n == (z / (x | y))) {"; goal = (z / (x | y)); goalFound = true; break;
                 case 607: if ((x ^ y) == 0) { break; } lines += "\n\nif (n == (z / (x ^ y))) {"; goal = (z / (x ^ y)); goalFound = true; break;
@@ -1188,7 +1189,7 @@ public class linesOfCodeScript : MonoBehaviour {
                 case 729: if ((y - x) == 0) { break; } lines += "\n\nif (n == (z / (y - x))) {"; goal = (z / (y - x)); goalFound = true; break;
                 case 730: if ((y * x) == 0) { break; } lines += "\n\nif (n == (z / (y * x))) {"; goal = (z / (y * x)); goalFound = true; break;
                 case 731: if (y == 0 || x == 0) { break; } lines += "\n\nif (n == (z / (y / x))) {"; goal = (z / (y / x)); goalFound = true; break;
-                case 732: if (y == 0 || x == 0) { break; } lines += "\n\nif (n == (z / (y % x))) {"; goal = (z / (y % x)); goalFound = true; break;
+                case 732: if (y == 0 || x == 0 || (y%x) == 0) { break; } lines += "\n\nif (n == (z / (y % x))) {"; goal = (z / (y % x)); goalFound = true; break;
                 case 733: if ((y & x) == 0) { break; } lines += "\n\nif (n == (z / (y & x))) {"; goal = (z / (y & x)); goalFound = true; break;
                 case 734: if ((y | x) == 0) { break; } lines += "\n\nif (n == (z / (y | x))) {"; goal = (z / (y | x)); goalFound = true; break;
                 case 735: if ((y ^ x) == 0) { break; } lines += "\n\nif (n == (z / (y ^ x))) {"; goal = (z / (y ^ x)); goalFound = true; break;
@@ -1238,19 +1239,23 @@ public class linesOfCodeScript : MonoBehaviour {
 
     void numPress (KMSelectable num)
     {
-        num.AddInteractionPunch();
-        GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, transform);
-        for (int i = 0; i <= 9; i++) {
-            if (num == numButtons[i])
+        if(strN.Length != 10)
+        {
+            num.AddInteractionPunch();
+            GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, transform);
+            for (int i = 0; i <= 9; i++)
             {
-                if (i != 0 || strN != "0")
+                if (num == numButtons[i])
                 {
-                    if (strN == "0")
+                    if (i != 0 || strN != "0")
                     {
-                        strN = "";
+                        if (strN == "0")
+                        {
+                            strN = "";
+                        }
+                        strN += digits[i];
+                        code.text = lines.Replace("#", strN);
                     }
-                    strN += digits[i];
-                    code.text = lines.Replace("#", strN);
                 }
             }
         }
@@ -1269,10 +1274,17 @@ public class linesOfCodeScript : MonoBehaviour {
             strN += ".";
         } else if (other == otherButtons[1]) //-
         {
-            strN += "-";
+            if(strN.Contains("-"))
+                strN = strN.Replace("-","");
+            else if(!strN.Equals("0"))
+                strN = strN.Insert(0, "-");
         } else if (other == otherButtons[2]) //<
         {
-            if (strN.Length != 0)
+            if (strN.Length == 2 && strN.Contains("-"))
+            {
+                strN = "0";
+            }
+            else if (strN.Length != 1)
             {
                 strN = strN.Substring(0, (strN.Length - 1));
             } else 
@@ -1293,5 +1305,74 @@ public class linesOfCodeScript : MonoBehaviour {
             }
         }
         code.text = lines.Replace("#", strN);
+    }
+
+    //twitch plays
+    private bool isValid(string s)
+    {
+        bool check = false;
+        int temp = 0;
+        check = int.TryParse(s, out temp);
+        if (check)
+        {
+            //if(temp >= -999999999 && temp <= 999999999)
+            //{
+                return true;
+            //}
+        }
+        return false;
+    }
+
+    #pragma warning disable 414
+    private readonly string TwitchHelpMessage = @"!{0} enter/submit <num> [Enters the specified number]";
+    #pragma warning restore 414
+    IEnumerator ProcessTwitchCommand(string command)
+    {
+        string[] parameters = command.Split(' ');
+        if(Regex.IsMatch(parameters[0], @"^\s*submit\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant) || Regex.IsMatch(parameters[0], @"^\s*enter\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            yield return null;
+            if (parameters.Length == 2)
+            {
+                if (isValid(parameters[1]))
+                {
+                    //clear previous input
+                    int length = strN.Length;
+                    for(int i = 0; i < length; i++)
+                    {
+                        otherButtons[2].OnInteract();
+                        yield return new WaitForSeconds(0.1f);
+                    }
+                    //enter input
+                    for (int i = 0; i < parameters[1].Length; i++)
+                    {
+                        int temp = 0;
+                        int.TryParse(parameters[1].ElementAt(i) + "", out temp);
+                        numButtons[temp].OnInteract();
+                        yield return new WaitForSeconds(0.1f);
+                    }
+                    if (parameters[1].ElementAt(0).Equals('-'))
+                    {
+                        otherButtons[1].OnInteract();
+                        yield return new WaitForSeconds(0.1f);
+                    }
+                    otherButtons[3].OnInteract();
+                }
+                else
+                {
+                    yield return "sendtochaterror The specified number '" + parameters[1] + "' is invalid!";
+                }
+            }
+            else
+            {
+                yield return "sendtochaterror Please specify the number that needs to be entered!";
+            }
+            yield break;
+        }
+    }
+
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        yield return ProcessTwitchCommand("submit "+goal);
     }
 }
